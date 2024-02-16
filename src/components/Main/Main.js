@@ -1,45 +1,47 @@
 import Styles from './main.module.css';
-import {useState} from "react";
 import Card from "../Card/Card";
-import Modal from "../Modal/Modal";
+import Spinner from "../Spinner/Spinner";
+import {useFetch} from "../customHooks/useFetch";
+import {useEffect} from "react";
 
 const Main = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [cardDesc, setModalDesc] = useState('')
+    const [users, isLoading] = useFetch('https://jsonplaceholder.typicode.com/users')
 
-    const openModalHandler = () => {
-        setIsModalOpen(true)
-    }
-    const closeModalHandler = () => {
-        setIsModalOpen(false)
-    }
+    // useEffect(() => {
+    //     setIsLoading(true)
+    //     // небольшая задержка для наглядности
+    //     setTimeout(() => {
+    //         fetch('https://jsonplaceholder.typicode.com/users')
+    //             .then((res) => res.json())
+    //             .then((data) => {
+    //                 setData(() => data)
+    //             })
+    //             .finally(() => {
+    //                 setIsLoading(false)
+    //             })
+    //     }, 1000)
+    // }, []);
+
+    useEffect(() => {
+        console.log(users)
+    }, [users]);
+
+
     return (
         <main className={Styles.container}>
+            <h1>Список пользователей</h1>
             <div className={Styles.cards}>
-                <Card
-                    openModal={openModalHandler}
-                    setDesc={setModalDesc}
-                    title="Карточка 1"
-                    desc="Описание 1"
-                />
-                <Card
-                    openModal={openModalHandler}
-                    setDesc={setModalDesc}
-                    title="Карточка 2"
-                    desc="Описание 2"
-                />
-                <Card
-                    openModal={openModalHandler}
-                    setDesc={setModalDesc}
-                    title="Карточка 3"
-                    desc="Описание 3"
-                />
+                {isLoading && <Spinner/>}
+                {
+                    !isLoading && users.length > 0 &&
+                    users.map((user) => {
+                        return <Card
+                            key={user.id}
+                            user={user}
+                        />
+                    })
+                }
             </div>
-
-            {isModalOpen && <Modal
-                closeModal={closeModalHandler}
-                desc={cardDesc}
-            />}
         </main>
     );
 }
