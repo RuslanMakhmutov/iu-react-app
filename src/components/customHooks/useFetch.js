@@ -16,7 +16,7 @@ export const useFetch = (url) => {
                 .finally(() => {
                     setIsLoading(false)
                 })
-        }, 1000)
+        }, 500)
     }, [url]);
 
     return [data, isLoading]

@@ -4,13 +4,13 @@ import {useEffect} from "react";
 const Modal = (props) => {
     const {isOpen, close} = props
 
-    useEffect(() => {
-        console.log('смонтирован')
-
-        return () => {
-            console.log('размонтирован')
-        }
-    }, []);
+    // useEffect(() => {
+    //     console.log('смонтирован')
+    //
+    //     return () => {
+    //         console.log('размонтирован')
+    //     }
+    // }, []);
 
     if (isOpen === false) {
         return null

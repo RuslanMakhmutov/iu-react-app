@@ -21,6 +21,13 @@
   }
 }
 
+@media (max-width: 576px) {
+  .card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 .card__inner {
   border: 1px solid darkblue;
   padding: 1rem;

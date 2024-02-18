@@ -1,12 +1,12 @@
 import Styles from './header.module.css';
+import {Link} from "react-router-dom";
 
 function Header() {
   return (
     <header className={Styles.header}>
-        <a href="">Ссылка 1</a>
-        <a href="">Ссылка 2</a>
-        <a href="">Ссылка 3</a>
-        <a href="">Ссылка 4</a>
+        <Link to='/'>Главная</Link>
+        <Link to='/contacts'>Контакты</Link>
+        <Link to='/catalog'>Каталог</Link>
     </header>
   );
 }
