@@ -2,7 +2,7 @@ import {deleteUserById} from "../store/usersSlice";
 import {useDispatch} from "react-redux";
 import {memo} from 'react'
 
-const UserCard = (props) => {
+const Card = (props) => {
     const {user} = props
     const dispatch = useDispatch()
     const deleteUserByIdHandler = (id) => () => {
@@ -32,9 +32,9 @@ const UserCard = (props) => {
                     href={user.website}
                 >{user.website}</a>
             </p>
-            <button onClick={deleteUserByIdHandler(user.id)}>Удалить пользователя</button>
+            <button onClick={deleteUserByIdHandler(user.id)}>Удалить</button>
         </li>
     );
 }
 
-export default memo(UserCard);
+export default memo(Card);

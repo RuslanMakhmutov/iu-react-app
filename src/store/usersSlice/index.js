@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    list: []
+    list: [],
+    isLoading: false,
 }
 
 const usersSlice = createSlice({
@@ -15,8 +16,11 @@ const usersSlice = createSlice({
             const {id} = action.payload
             state.list = state.list.filter(user => user.id !== id)
         },
+        setIsLoading: (state, action) => {
+            state.isLoading = action.payload
+        },
     }
 })
 
-export const { addUsers, deleteUserById} = usersSlice.actions
+export const { addUsers, deleteUserById, setIsLoading} = usersSlice.actions
 export default usersSlice.reducer
