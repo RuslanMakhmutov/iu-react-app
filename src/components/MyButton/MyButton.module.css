@@ -1,0 +1,22 @@
+.btn {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.primary {
+    background-color: blue;
+    color: #fff;;
+}
+
+.secondary {
+    background-color: green;
+    color: #fff;
+    opacity: 0.7;
+}
+
+.is-disabled {
+    background-color: gray;
+    opacity: 0.5;
+}
